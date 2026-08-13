@@ -69,9 +69,22 @@ export function CharacterScreen() {
       #game-shell:has(.character-page) .screen-header{display:none}
       #game-shell:has(.character-page) #content-root{width:100%}
       #game-shell:has(.character-page) .character-showcase{min-height:calc(100vh - 78px);overflow:auto}
+
+      /* Character-only layout: inventory and equipment are separate top-menu screens. */
+      #game-shell:has(.character-page) .character-bottom-grid{grid-template-columns:1fr}
+      #game-shell:has(.character-page) .character-bottom-grid > .equipment-preview,
+      #game-shell:has(.character-page) .character-bottom-grid > .skills-preview,
+      #game-shell:has(.character-page) .character-bottom-grid > .inventory-preview{display:none}
+      #game-shell:has(.character-page) .character-bottom-grid > .info-preview{display:block;grid-column:1/-1}
+      #game-shell:has(.character-page) .character-hotbar{display:none}
+      #game-shell:has(.character-page) .info-preview .info-lines{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 18px}
+      #game-shell:has(.character-page) .info-preview .info-lines>div{padding:7px 0}
+      #game-shell:has(.character-page) .info-preview .points-box{margin-top:8px}
+
       @media(max-width:900px){
         #game-shell:has(.character-page) #left-menu{justify-content:flex-start}
         #game-shell:has(.character-page) #left-menu .menu-item{padding:0 9px;font-size:12px}
+        #game-shell:has(.character-page) .info-preview .info-lines{grid-template-columns:repeat(2,minmax(0,1fr))}
       }
     </style>
     <div class="character-showcase game-screen character-page">
