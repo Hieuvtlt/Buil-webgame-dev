@@ -1,0 +1,43 @@
+/* Internal scrollbars for dense character UI panels. */
+.character-profile-panel,
+.showcase-panel,
+.animation-card {
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #8a6d2b #0b0c0a;
+}
+
+.character-profile-panel::-webkit-scrollbar,
+.showcase-panel::-webkit-scrollbar,
+.animation-card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.character-profile-panel::-webkit-scrollbar-track,
+.showcase-panel::-webkit-scrollbar-track,
+.animation-card::-webkit-scrollbar-track {
+  background: #0b0c0a;
+  border-left: 1px solid #242318;
+}
+
+.character-profile-panel::-webkit-scrollbar-thumb,
+.showcase-panel::-webkit-scrollbar-thumb,
+.animation-card::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a78332, #5b471d);
+  border: 1px solid #c29a3d;
+  border-radius: 8px;
+}
+
+.character-profile-panel::-webkit-scrollbar-thumb:hover,
+.showcase-panel::-webkit-scrollbar-thumb:hover,
+.animation-card::-webkit-scrollbar-thumb:hover {
+  background: #c29a3d;
+}
+
+@media (min-width: 1201px) {
+  .character-profile-panel,
+  .showcase-panel {
+    min-height: 0;
+  }
+}
