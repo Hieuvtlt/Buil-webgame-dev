@@ -4,6 +4,7 @@ import './responsive.css'
 import './game-ui-redesign.css'
 import './game-ui-compact.css'
 import './combat.css'
+import './character-showcase.css'
 
 import characterImg from './assets/character.png'
 import { player, getPlayerStats } from './data/character.js'
