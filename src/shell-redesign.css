@@ -3,15 +3,15 @@
 html,body,#app{margin:0;min-height:100%;background:#060706;color:var(--shell-text)}
 body{overflow-x:hidden}
 .clean-game-shell{min-height:100vh;background:radial-gradient(circle at 50% 0%,rgba(71,63,35,.13),transparent 34%),#070806}
-.game-topbar{position:sticky;top:0;z-index:1000;width:100%;height:64px;display:flex;align-items:center;gap:14px;box-sizing:border-box;padding:0 14px;background:linear-gradient(180deg,#17160f,#0b0b08);border-bottom:1px solid #6d5520;box-shadow:0 5px 24px rgba(0,0,0,.55)}
+.game-topbar{position:sticky;top:0;z-index:1000;width:100%;min-height:64px;display:flex;align-items:center;gap:14px;box-sizing:border-box;padding:0 14px;background:linear-gradient(180deg,#17160f,#0b0b08);border-bottom:1px solid #6d5520;box-shadow:0 5px 24px rgba(0,0,0,.55)}
 .brand-mark{flex:0 0 auto;display:flex;align-items:center;gap:7px;color:#f0c44b;font:700 15px Georgia,"Times New Roman",serif;letter-spacing:.5px;padding-right:12px;border-right:1px solid #40371f}
-.top-menu{min-width:0;flex:1;display:flex;align-items:center;gap:4px;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+.top-menu{min-width:0;flex:1;display:flex;align-items:center;justify-content:flex-start;gap:4px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;white-space:nowrap}
+.top-menu::-webkit-scrollbar{display:none}
 .top-menu-item{height:42px;flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:0 10px;border:1px solid transparent;border-radius:6px;background:transparent;color:#bdb7a7;cursor:pointer;white-space:nowrap;font:600 13px Georgia,"Times New Roman",serif;transition:.16s ease}
 .top-menu-item:hover{color:#f2ca58;background:#18150d;border-color:#5e4a22}
 .top-menu-item.active{color:#f6ce58;background:linear-gradient(180deg,#29200b,#17130a);border-color:#a57b20;box-shadow:inset 0 0 14px rgba(220,171,48,.12),0 0 10px rgba(212,165,44,.07)}
 .top-menu-icon{font-size:15px;line-height:1}
-.top-status{flex:0 0 auto;display:flex;align-items:center;gap:7px;color:#c9c2b0;font:600 12px Georgia,"Times New Roman",serif;white-space:nowrap;padding-left:8px}
-.top-dot{font-size:8px;color:#75b74d}
+.top-status{display:none!important}
 .clean-main{width:100%;max-width:none;box-sizing:border-box;margin:0;padding:12px 12px 24px}
 .clean-main .screen-header{display:flex;align-items:center;justify-content:center;min-height:48px;margin-bottom:10px;background:linear-gradient(180deg,#1a1811,#100f0c);border:1px solid #5d4b25;border-radius:6px;color:#e9c34e}
 .clean-main .screen-header h2{margin:0 12px;font-size:20px;letter-spacing:1px}
@@ -21,5 +21,5 @@ body{overflow-x:hidden}
 #col-left,#col-right,#bottom-bar{display:none!important}
 #game-log{display:none!important}
 .character-page{margin-top:0!important}
-@media(max-width:1050px){.game-topbar{height:auto;min-height:58px;align-items:stretch}.brand-mark{padding:0 8px;align-self:center}.top-status{display:none}.top-menu{padding:7px 0}.top-menu-item{height:38px;padding:0 8px;font-size:12px}.clean-main{padding:8px}}
+@media(max-width:1050px){.game-topbar{height:auto;min-height:58px;align-items:stretch}.brand-mark{padding:0 8px;align-self:center}.top-menu{padding:7px 0}.top-menu-item{height:38px;padding:0 8px;font-size:12px}.clean-main{padding:8px}}
 @media(max-width:650px){.brand-mark span{display:none}.brand-mark{border-right:0}.clean-main .screen-header h2{font-size:17px}}
