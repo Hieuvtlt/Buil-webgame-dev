@@ -1,0 +1,43 @@
+name: Copy original game
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout development repository
+        uses: actions/checkout@v4
+        with:
+          path: dev
+
+      - name: Checkout original repository
+        uses: actions/checkout@v4
+        with:
+          repository: Hieuvtlt/Buil-webgame
+          ref: main
+          path: original
+          fetch-depth: 1
+
+      - name: Replace development contents with original
+        shell: bash
+        run: |
+          set -e
+          cd "$GITHUB_WORKSPACE/dev"
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name .github -exec rm -rf {} +
+          cp -a "$GITHUB_WORKSPACE/original/." .
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to copy."
+          else
+            git commit -m "Copy original Buil-webgame into development repository"
+            git push origin HEAD:main
+          fi
