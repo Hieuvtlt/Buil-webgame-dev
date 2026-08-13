@@ -65,6 +65,12 @@ document.querySelector('#app').innerHTML = `<div id="game-shell" class="clean-ga
 const contentRoot = document.querySelector('#content-root')
 let currentScreenName = null
 
+function renderTopStatus() {
+  const status = document.querySelector('.top-status')
+  if (!status) return
+  status.innerHTML = `<span>Lv.${player.level}</span><span class="top-dot">●</span><span>${player.name || 'Nhân vật'}</span>`
+}
+
 function openScreen(name) {
   const screen = screens[name]
   if (!screen) return
@@ -110,9 +116,5 @@ window.addEventListener('game:log', event => {
   if (typeof detail === 'string') addGameLog(detail)
   else if (detail?.message) addGameLog(detail.message, detail.type ?? 'system')
 })
-window.addEventListener('game:character-changed', () => {
-  document.querySelector('.top-status')?.replaceWith(document.createElement('div'))
-  const old = document.querySelector('.top-status')
-  if (old) old.outerHTML = `<div class="top-status"><span>Lv.${player.level}</span><span class="top-dot">●</span><span>${player.name || 'Nhân vật'}</span></div>`
-})
+window.addEventListener('game:character-changed', renderTopStatus)
 openScreen('Chiến đấu')
