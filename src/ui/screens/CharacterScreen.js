@@ -65,7 +65,7 @@ export function CharacterScreen() {
       #game-shell:has(.character-page) #left-menu .menu-item.active{border-color:#8b6b28;color:#f4ce58;background:#1b170b;box-shadow:inset 0 0 12px rgba(214,164,48,.12)}
       #game-shell:has(.character-page) #left-menu .menu-icon{margin-right:6px}
       #game-shell:has(.character-page) #col-right,#game-shell:has(.character-page) #bottom-bar{display:none}
-      #game-shell:has(.character-page) #col-center{width:100%;max-width:none;margin:0;padding:66px 10px 12px}
+      #game-shell:has(.character-page) #col-center{width:100%;max-width:none;margin:0;padding:0 10px 12px}
       #game-shell:has(.character-page) .screen-header{display:none}
       #game-shell:has(.character-page) #content-root{width:100%}
       #game-shell:has(.character-page) .character-showcase{min-height:calc(100vh - 78px);overflow:auto}
