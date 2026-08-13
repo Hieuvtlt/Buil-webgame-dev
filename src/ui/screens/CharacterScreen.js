@@ -19,11 +19,6 @@ const ATTR_LABELS = [
   ['vitality', 'VIT', 'Thể lực'],
 ]
 
-function equippedIcon(slot) {
-  const item = getEquippedItem(slot)
-  return item?.icon ?? ''
-}
-
 function equipmentSlotMarkup(slot, index) {
   const item = getEquippedItem(slot.id)
   return `<button class="hero-equip-slot${item ? ' filled' : ''}" type="button" data-slot-id="${slot.id}" title="${item?.name ?? slot.name}">
@@ -59,7 +54,27 @@ export function CharacterScreen() {
   const mpPct = stats.maxMp ? Math.min(100, player.mp / stats.maxMp * 100) : 0
 
   return `
-    <div class="character-showcase game-screen">
+    <style>
+      /* Character page: the character screen owns the whole canvas. */
+      #game-shell:has(.character-page) #game-grid{display:block;min-height:100vh}
+      #game-shell:has(.character-page) #col-left{position:fixed;z-index:30;top:0;left:0;right:0;width:100%;height:58px;display:block;padding:0;background:#080806;border-bottom:1px solid #5d4b25;box-shadow:0 4px 18px rgba(0,0,0,.55)}
+      #game-shell:has(.character-page) #col-left .profile-card{display:none}
+      #game-shell:has(.character-page) #left-menu{height:58px;display:flex;align-items:center;justify-content:center;gap:5px;padding:6px 12px;overflow-x:auto;overflow-y:hidden}
+      #game-shell:has(.character-page) #left-menu .menu-item{flex:0 0 auto;height:42px;padding:0 12px;border:1px solid transparent;border-radius:5px;background:transparent;color:#bdb6a4;font:600 13px Georgia,"Times New Roman",serif;white-space:nowrap}
+      #game-shell:has(.character-page) #left-menu .menu-item:hover{border-color:#5d4b25;color:#f0ca57;background:#17140c}
+      #game-shell:has(.character-page) #left-menu .menu-item.active{border-color:#8b6b28;color:#f4ce58;background:#1b170b;box-shadow:inset 0 0 12px rgba(214,164,48,.12)}
+      #game-shell:has(.character-page) #left-menu .menu-icon{margin-right:6px}
+      #game-shell:has(.character-page) #col-right,#game-shell:has(.character-page) #bottom-bar{display:none}
+      #game-shell:has(.character-page) #col-center{width:100%;max-width:none;margin:0;padding:66px 10px 12px}
+      #game-shell:has(.character-page) .screen-header{display:none}
+      #game-shell:has(.character-page) #content-root{width:100%}
+      #game-shell:has(.character-page) .character-showcase{min-height:calc(100vh - 78px);overflow:auto}
+      @media(max-width:900px){
+        #game-shell:has(.character-page) #left-menu{justify-content:flex-start}
+        #game-shell:has(.character-page) #left-menu .menu-item{padding:0 9px;font-size:12px}
+      }
+    </style>
+    <div class="character-showcase game-screen character-page">
       <div class="character-titlebar"><span>⚔️</span><b>NHÂN VẬT</b></div>
       <div class="character-dashboard">
         <section class="character-profile-panel">
