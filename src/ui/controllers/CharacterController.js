@@ -13,32 +13,24 @@ function rerenderCharacter() {
 }
 
 export function mountCharacterScreen() {
-  const equipGrid = document.getElementById('equip-grid')
-
   document.querySelectorAll('.attr-add-btn').forEach((button) => {
     button.addEventListener('click', () => {
       const attribute = button.dataset.attribute
       if (!addFreeAttributePoints(attribute, 1)) return
       rerenderCharacter()
+      window.dispatchEvent(new CustomEvent('game:character-changed'))
     })
   })
 
-  if (!equipGrid) return
-
-  let selectedEquipSlot = null
-
-  equipGrid.querySelectorAll('.equip-slot').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      equipGrid.querySelectorAll('.equip-slot').forEach((b) => b.classList.remove('is-selected'))
-      btn.classList.add('is-selected')
-      selectedEquipSlot = btn.dataset.slotId
+  document.querySelectorAll('.hero-equip-slot[data-slot-id]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const slot = button.dataset.slotId
+      const item = player.equipment[slot]
+      if (!item) return
+      if (!unequipItem(slot)) return
+      rerenderCharacter()
+      window.dispatchEvent(new CustomEvent('game:inventory-changed'))
+      window.dispatchEvent(new CustomEvent('game:character-changed'))
     })
-  })
-
-  document.getElementById('btn-unequip')?.addEventListener('click', () => {
-    if (selectedEquipSlot === null) return
-    if (!unequipItem(selectedEquipSlot)) return
-    rerenderCharacter()
-    window.dispatchEvent(new CustomEvent('game:inventory-changed'))
   })
 }
