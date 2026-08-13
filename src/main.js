@@ -49,7 +49,6 @@ function topNavMarkup() {
     <nav id="top-menu" class="top-menu" aria-label="Menu game">
       ${menuNames.map((name, index) => `<button class="top-menu-item${index === 0 ? ' active' : ''}" type="button" data-screen="${name}"><span class="top-menu-icon">${icons[index] ?? '•'}</span><span>${name}</span></button>`).join('')}
     </nav>
-    <div class="top-status"><span>Lv.${player.level}</span><span class="top-dot">●</span><span>${player.name || 'Nhân vật'}</span></div>
   </header>`
 }
 
@@ -64,12 +63,6 @@ document.querySelector('#app').innerHTML = `<div id="game-shell" class="clean-ga
 
 const contentRoot = document.querySelector('#content-root')
 let currentScreenName = null
-
-function renderTopStatus() {
-  const status = document.querySelector('.top-status')
-  if (!status) return
-  status.innerHTML = `<span>Lv.${player.level}</span><span class="top-dot">●</span><span>${player.name || 'Nhân vật'}</span>`
-}
 
 function openScreen(name) {
   const screen = screens[name]
@@ -116,5 +109,4 @@ window.addEventListener('game:log', event => {
   if (typeof detail === 'string') addGameLog(detail)
   else if (detail?.message) addGameLog(detail.message, detail.type ?? 'system')
 })
-window.addEventListener('game:character-changed', renderTopStatus)
 openScreen('Chiến đấu')
