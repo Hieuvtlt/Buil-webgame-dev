@@ -1,0 +1,128 @@
+GAME WEB - CẤU TRÚC PROJECT
+============================
+
+Mục tiêu
+--------
+Project được tổ chức để dễ đọc, dễ sửa và dễ mở rộng. Mỗi menu chính có một file Screen riêng. Logic tương tác của Screen được tách sang controllers khi cần. Dữ liệu game và hệ thống game sẽ tiếp tục được tách riêng khi dự án phát triển.
+
+1. src/main.js
+-------------
+Điểm khởi động của game.
+- Tạo layout chính.
+- Tạo menu.
+- Chuyển đổi giữa các Screen.
+- Không chứa logic chi tiết của từng menu.
+
+2. src/ui/screens/
+------------------
+Chứa giao diện của từng menu/màn hình.
+
+CharacterScreen.js
+- Màn hình Nhân vật.
+- Thông tin nhân vật, thuộc tính, trang bị và túi thiết bị trên màn hình nhân vật.
+
+InventoryScreen.js
+- Màn hình Túi đồ.
+- Lưới item, phân trang và vùng thông tin item.
+
+SkillsScreen.js
+- Màn hình Kỹ năng.
+- Danh sách kỹ năng, phân trang và thông tin kỹ năng.
+
+LuyenDanScreen.js
+- Màn hình Luyện đan.
+
+LuyenKhiScreen.js
+- Màn hình Luyện khí.
+
+ThuongHoiScreen.js
+- Màn hình Thương hội.
+- Mua, bán, danh sách sản phẩm và thông tin sản phẩm.
+
+NhiemVuScreen.js
+- Màn hình Nhiệm vụ.
+- Hiện là khung riêng, sẽ phát triển sau.
+
+NgoaiCanhScreen.js
+- Màn hình Ngoại cảnh.
+- Hiện là khung riêng, sẽ phát triển sau.
+
+GMScreen.js
+- Màn hình GM.
+- Hiện là khung riêng, sẽ phát triển sau.
+
+SettingsScreen.js
+- Màn hình Cài đặt.
+- Hiện là khung riêng, sẽ phát triển sau.
+
+3. src/ui/controllers/
+----------------------
+Chứa logic tương tác DOM của Screen.
+
+CharacterController.js
+- Chọn ô trang bị/túi.
+- Trang bị và gỡ item.
+
+InventoryController.js
+- Chọn item.
+- Hiển thị thông tin item.
+- Phân trang UI.
+
+SkillsController.js
+- Chọn kỹ năng.
+- Hiển thị thông tin kỹ năng.
+- Phân trang UI.
+
+MerchantController.js
+- Chọn tab Mua/Bán.
+- Chọn sản phẩm.
+- Hiển thị thông tin sản phẩm.
+- Phân trang UI.
+
+Nguyên tắc: Screen tạo HTML/UI; Controller xử lý sự kiện và tương tác.
+
+4. src/assets/
+---------------
+Hình ảnh, âm thanh và tài nguyên tĩnh của game.
+
+5. src/data/ (sẽ mở rộng)
+-------------------------
+Dữ liệu game, ví dụ:
+- player.js: dữ liệu nhân vật.
+- items.js: dữ liệu vật phẩm.
+- skills.js: dữ liệu kỹ năng.
+- monsters.js: dữ liệu quái/Boss.
+
+Không nên đặt dữ liệu game lớn trực tiếp trong Screen.
+
+6. src/systems/ (sẽ mở rộng)
+----------------------------
+Logic game độc lập với giao diện, ví dụ:
+- combat.js: chiến đấu.
+- inventory.js: quản lý túi đồ.
+- equipment.js: trang bị.
+- skills.js: xử lý kỹ năng.
+- crafting.js: luyện đan/luyện khí.
+
+7. src/config/ (sẽ mở rộng)
+---------------------------
+Các thông số/cấu hình chung của game.
+
+8. src/style.css
+----------------
+CSS chung của game. Khi một Screen có CSS quá lớn, có thể tiếp tục tách CSS theo component/screen mà không phá kiến trúc.
+
+QUY TẮC PHÁT TRIỂN
+------------------
+- Sửa giao diện menu -> ưu tiên file Screen tương ứng.
+- Sửa tương tác menu -> ưu tiên Controller tương ứng.
+- Sửa dữ liệu -> đưa vào data/.
+- Sửa cơ chế game -> đưa vào systems/.
+- Thêm menu mới -> tạo một Screen mới rồi đăng ký trong main.js.
+- Không biến main.js thành nơi chứa toàn bộ logic game.
+- Không viết lại project từ đầu nếu chỉ cần mở rộng một phần.
+- Khi tạo tính năng lớn, ưu tiên tách file thay vì nhồi thêm code vào file hiện có.
+
+LƯU Ý HIỆN TẠI
+---------------
+Một số màn hình mới chỉ là khung placeholder để kiến trúc hoàn chỉnh. Chúng sẽ được phát triển dần theo yêu cầu game.

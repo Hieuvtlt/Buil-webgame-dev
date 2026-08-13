@@ -1,0 +1,1249 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#app {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  text-align: center;
+
+  border-inline: 1px solid var(--border);
+
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+/* ===== Game layout: 3 cột (trái / giữa / phải) ===== */
+#game-grid{
+  width: calc(100% - 2px); /* bù 1px border trái + 1px border phải của #app */
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 0.6fr 2fr 0.6fr;
+  gap: 10px;
+  height: calc(100svh - 24px);
+}
+
+#col-left,
+#col-center,
+#col-right {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.03);
+
+  overflow: auto;
+  min-height: 0;
+
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+#col-center {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Tách cột phải thành 2 phần (trên / dưới) */
+#col-right {
+  display: grid;
+  grid-template-rows: 1fr 1fr; /* nửa trên / nửa dưới */
+  gap: 12px;
+  height: 100%;
+}
+
+#col-right section {
+  border: 1px dashed rgba(170, 59, 255, 0.5);
+  border-radius: 10px;
+  overflow: auto;
+  min-height: 0;
+
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+/* ===== Menu trái ===== */
+#left-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-item {
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  align-items: center;     /* canh dọc giữa */
+  justify-content: center; /* canh ngang giữa */
+
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  color: var(--text-h);
+  font-size: 16px;
+
+  padding: 0;
+  text-align: center;
+}
+
+/* ===== Character screen layout ===== */
+#content-root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#col-center {
+  padding: 12px; /* giữ khoảng đệm chung của cột */
+  box-sizing: border-box;
+}
+
+.character-screen {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 0.6fr 1.1fr; /* phải to hơn chút */
+  gap: 12px;
+
+  min-height: 0;
+}
+
+.char-left {
+  display: grid;
+  grid-template-rows: 2fr 1fr; /* trên nhiều hơn dưới ít hơn */
+  gap: 12px;
+  min-height: 0;
+}
+
+.char-left-top,
+.char-left-bottom,
+.char-right {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.02);
+  padding: 12px;
+  box-sizing: border-box;
+  min-height: 0;
+}
+
+.panel-title-sm {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.char-basic {
+  display: grid;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.char-hint {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.9;
+  color: var(--text-h);
+}
+
+.char-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+.char-figure-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  min-height: 0;
+}
+
+.figure-placeholder,
+.equip-placeholder {
+  border: 1px dashed rgba(170, 59, 255, 0.5);
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 180px;
+  overflow: auto;
+  font-size: 14px;
+}
+
+.attr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2x2 */
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.attr-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.attr-item b {
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.free-point {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.02);
+  font-size: 15px;
+}
+/* ===== Character screen layout ===== */
+.character-screen{
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 0.95fr 1.1fr; /* phải to hơn chút */
+  gap: 12px;
+
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.char-left{
+  display: grid;
+  grid-template-rows: 2fr 1fr; /* trên nhiều hơn dưới ít hơn */
+  gap: 12px;
+  min-height: 0;
+}
+
+.char-left-top,
+.char-left-bottom,
+.char-right{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  padding: 12px;
+
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.panel-title-sm{
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.char-basic{
+  display: grid;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.char-hint{
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.9;
+  color: var(--text-h);
+}
+
+.char-right{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+.char-figure-area{
+  display: grid;
+  grid-template-columns: 1fr 1.15fr; /* cột nhân vật và cột trang bị */
+  gap: 10px;
+  min-height: 0;
+}
+
+.figure-placeholder{
+  border: 1px dashed rgba(170, 59, 255, 0.5);
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 180px;
+  overflow: auto;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* ===== Equip slots ===== */
+.equip-panel{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+
+.equip-title{
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.equip-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 cột */
+  gap: 8px;
+  min-height: 0;
+}
+
+.equip-slot{
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.02);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-h);
+  font-size: 13px;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.equip-slot:hover{
+  box-shadow: 0 6px 14px rgba(170, 59, 255, 0.15);
+}
+
+/* trạng thái chọn (đổi bằng JS ở main.js) */
+.equip-slot.is-selected{
+  border-color: rgba(170, 59, 255, 0.8);
+  background: var(--accent-bg);
+}
+
+/* ===== Thuộc tính & điểm tự do (giữ lại như của bạn) ===== */
+.attr-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2x2 */
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.attr-item{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(0,0,0,0.02);
+}
+
+.attr-item b{
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.free-point{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.02);
+  font-size: 15px;
+}
+.character-avatar{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+/* Khung túi đồ nằm dưới trang bị */
+.inventory-under-panel{
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  padding: 12px;
+  box-sizing: border-box;
+  min-height: 0;
+}
+
+.inventory-under-title{
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 10px;
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.inventory-under-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cột */
+  gap: 8px;
+  min-height: 0;
+}
+
+.inv-slot{
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.02);
+  color: var(--text-h);
+  font-size: 12px;
+  cursor: default; /* vì đang chọn B: chưa cần click */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+/* Menu nhỏ cạnh chuột */
+.mini-slot-menu{
+  position: fixed;
+  z-index: 9999;
+
+  min-width: 140px;
+  background: rgba(18, 18, 22, 0.98);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  user-select: none;
+}
+
+.mini-slot-menu button{
+  width: 100%;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-h);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.mini-slot-menu button:hover{
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+.equip-actions{
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn{
+  flex: 1;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.02);
+  cursor: pointer;
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.action-btn.danger{
+  border-color: rgba(170, 59, 255, 0.6);
+  background: rgba(170, 59, 255, 0.08);
+}
+.inventory-pagination{
+  margin: 10px 0 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.page-btn{
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.02);
+  color: var(--text-h);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.page-btn.active{
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+  color: var(--text-h);
+}
+/* ===== InventoryScreen ===== */
+.inventory-screen{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+.inventory-pagination{
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+.inv-page-btn{
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.02);
+  color: var(--text-h);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.inv-page-btn.active{
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.inventory-layout-2col{
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* 2 cột */
+  gap: 12px;
+  min-height: 0;
+  flex: 1;
+}
+
+.inventory-grid-wrap{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  padding: 12px;
+  min-height: 0;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.inventory-grid{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 cột */
+  gap: 8px;
+  min-height: 0;
+}
+
+.inv-slot2{
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.02);
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-h);
+  font-size: 12px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.inv-slot2.is-selected{
+  border-color: rgba(170, 59, 255, 0.8);
+  background: var(--accent-bg);
+}
+/* ===== Currency boxes (InventoryScreen) ===== */
+.inventory-currency{
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+
+  /* nằm dưới khung 50 slot */
+}
+
+.currency-box{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  padding: 10px 12px;
+  box-sizing: border-box;
+
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+}
+/* ===== SkillsScreen ===== */
+.skills-screen{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+.skills-pagination{
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.skill-page-btn{
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.02);
+  color: var(--text-h);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.skill-page-btn.active{
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.skills-layout{
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 12px;
+  min-height: 0;
+}
+
+.skills-left{
+  min-height: 0;
+}
+
+.skills-grid{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  padding: 12px;
+
+  min-height: 0;
+  overflow: auto;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr; /* 1 cột */
+  gap: 8px;
+}
+
+.skill-slot{
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.02);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+  color: var(--text-h);
+  user-select: none;
+  cursor: pointer;
+}
+
+.skill-slot.is-selected{
+  border-color: rgba(170, 59, 255, 0.8);
+  background: var(--accent-bg);
+}
+
+.skills-right{
+  min-height: 0;
+}
+
+.skill-info-box{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  padding: 12px;
+  min-height: 500px;
+
+  box-sizing: border-box;
+}
+
+.skill-info-title{
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--text-h);
+}
+
+.skill-info-meta{
+  font-size: 14px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.skill-info-desc{
+  font-size: 14px;
+  opacity: 0.95;
+}
+/* ===== Nghề nghiệp (Luyện đan/ Luyện khí) ===== */
+.profession-screen{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.profession-columns{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr; /* cột 3 hơi to */
+  gap: 12px;
+  min-height: 0;
+}
+
+.profession-col,
+.profession-info-col{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  padding: 12px;
+  box-sizing: border-box;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profession-title{
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.profession-image-slot{
+  border: 1px dashed rgba(170, 59, 255, 0.45);
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-h);
+  opacity: 0.9;
+}
+
+.profession-list{
+  display: grid;
+  grid-template-columns: 1fr; /* 5 ô dọc */
+  gap: 8px;
+}
+
+
+/* đảm bảo nghề nghiệp có style cho ô nhỏ */
+.profession-small-item{
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-h);
+  font-size: 14px;
+  user-select: none;
+}
+
+/* active cho 4 ô dưới */
+.profession-rank.is-selected{
+  border-color: rgba(170, 59, 255, 0.8);
+  background: var(--accent-bg);
+}
+.inv-info-box{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  padding: 12px;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+}
+.profession-columns-2{
+  display: grid;
+  grid-template-columns: 1fr 1.1fr; /* cột trái hơi nhỏ hơn */
+  gap: 12px;
+  min-height: 0;
+}
+/* ===== ThuongHoiScreen ===== */
+.merchant-screen{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Tabs Mua/Bán */
+.merchant-tabs{
+  display: flex;
+  gap: 8px;
+}
+
+.merchant-tab{
+  flex: 1;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.02);
+  color: var(--text-h);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.merchant-tab.active{
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+/* layout 2 cột */
+.merchant-layout{
+  display: grid;
+  grid-template-columns: 1.4fr 1fr; /* trái rộng hơn */
+  gap: 12px;
+  min-height: 0;
+  flex: 1;
+}
+
+/* Bảng excel kiểu ô vuông liền nhau */
+.merchant-table-wrap{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  overflow: auto;
+  min-height: 0;
+}
+
+.merchant-table{
+  min-width: 100%;
+}
+
+/* hàng */
+.m-row{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+/* ô */
+.m-cell{
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+
+  box-sizing: border-box;
+  font-size: 13px;
+  color: var(--text-h);
+  white-space: nowrap;
+}
+
+/* bỏ border phải cuối hàng */
+.m-row .m-cell:last-child{
+  border-right: none;
+}
+
+/* header */
+.m-header .m-cell{
+  font-weight: 800;
+  background: rgba(0,0,0,0.03);
+}
+
+/* hàng dữ liệu */
+.m-data .m-cell{
+  background: transparent;
+}
+
+.merchant-info{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  padding: 12px;
+  min-height: 0;
+}
+
+.merchant-info-title{
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--text-h);
+}
+
+.merchant-info-line{
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.merchant-info-desc{
+  margin-top: 10px;
+  opacity: 0.9;
+  font-size: 14px;
+}
+.merchant-pagination{
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.merchant-page-btn{
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.02);
+  color: var(--text-h);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.merchant-page-btn.active{
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+/* active tab mua/bán */
+.merchant-tab-active{
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+/* active từng hàng */
+.m-row.m-data.is-selected{
+  outline: 2px solid rgba(170, 59, 255, 0.75);
+  outline-offset: -2px;
+  background: rgba(170, 59, 255, 0.08);
+}
+
+.m-row.is-selected,
+.m-data.is-selected{
+  outline: 2px solid rgba(170, 59, 255, 0.75);
+  outline-offset: -2px;
+  background: rgba(170, 59, 255, 0.08);
+}
+#left-menu .menu-item.active{
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+.inv-slot.is-selected{
+  border-color: rgba(170, 59, 255, 0.8);
+  background: var(--accent-bg);
+}
+
+/* Chỉ tắt hiệu ứng active cho 2 nút Trang bị/Gỡ */
+#btn-equip.active,
+#btn-unequip.active{
+  border-color: var(--border) !important;
+  background: rgba(0,0,0,0.02) !important;
+  color: var(--text-h) !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,308 @@
+/* ===== Giao diện game: 3 cột cố định ===== */
+#game-grid {
+  grid-template-columns: 190px minmax(0, 1fr) 285px;
+  gap: 8px;
+  height: calc(100svh - 16px);
+}
+
+#col-left,
+#col-center,
+#col-right {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#col-left,
+#col-center,
+#col-right,
+#content-root {
+  min-width: 0;
+}
+
+#col-left,
+#col-center {
+  overflow: auto;
+}
+
+#col-right {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  overflow: hidden;
+}
+
+#col-right .side-panel {
+  min-height: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 9px;
+  border: 1px solid rgba(170, 59, 255, .45);
+  border-radius: 8px;
+  background: rgba(7, 12, 9, .75);
+}
+
+/* AUTO phải tự cuộn khi nội dung dài. Dùng selector có độ ưu tiên cao hơn
+   #col-right .side-panel để overflow:hidden không ghi đè overflow:auto. */
+#col-right #auto-panel {
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #4b8f63 #0b120e;
+}
+
+#col-right #log-panel {
+  min-height: 0;
+  overflow: hidden;
+}
+
+#auto-panel::-webkit-scrollbar,
+#log-panel::-webkit-scrollbar,
+.game-log::-webkit-scrollbar {
+  width: 7px;
+}
+
+#auto-panel::-webkit-scrollbar-track,
+#log-panel::-webkit-scrollbar-track,
+.game-log::-webkit-scrollbar-track {
+  background: #0b120e;
+  border-radius: 6px;
+}
+
+#auto-panel::-webkit-scrollbar-thumb,
+#log-panel::-webkit-scrollbar-thumb,
+.game-log::-webkit-scrollbar-thumb {
+  background: #4b8f63;
+  border-radius: 6px;
+}
+
+#auto-panel::-webkit-scrollbar-thumb:hover,
+#log-panel::-webkit-scrollbar-thumb:hover,
+.game-log::-webkit-scrollbar-thumb:hover {
+  background: #63b77e;
+}
+
+#left-menu { gap: 6px; }
+
+.menu-item {
+  height: 38px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.panel-title {
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.panel-title-sm {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.game-screen {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+/* ===== Cột AUTO / NHẬT KÝ ===== */
+.side-panel-title {
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #00e85b;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(0, 255, 102, .25);
+  padding-bottom: 6px;
+}
+
+.log-title { color: #ffe35c; }
+
+.auto-options {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  color: #c8e8d0;
+}
+
+.auto-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.auto-options input { accent-color: #00c94f; }
+
+.auto-range-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(29, 107, 58, .35);
+  font-size: 12px;
+  color: #9fc8aa;
+}
+
+#auto-range {
+  width: 45px;
+  box-sizing: border-box;
+  background: #0b120e;
+  color: #d9fbe4;
+  border: 1px solid #285d39;
+  border-radius: 4px;
+  padding: 3px 5px;
+}
+
+.auto-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 9px;
+  padding-bottom: 2px;
+}
+
+.side-action {
+  background: #102719;
+  border: 1px solid #00a94f;
+  color: #00ff66;
+  border-radius: 4px;
+  padding: 6px 4px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.side-action.danger {
+  border-color: #a53b35;
+  color: #ff6666;
+}
+
+.game-log {
+  height: calc(100% - 31px);
+  overflow-y: auto;
+  padding-right: 3px;
+  font-family: Consolas, 'Segoe UI', sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: left;
+  scrollbar-width: thin;
+  scrollbar-color: #4b8f63 #0b120e;
+}
+
+.log-line {
+  padding: 2px 0;
+  color: #d2e6d8;
+  border-bottom: 1px solid rgba(255,255,255,.025);
+}
+
+.log-item { color: #ffe45e; }
+.log-warning { color: #ffcf58; }
+.log-danger { color: #ff6666; }
+
+/* ===== Túi đồ ===== */
+.inventory-layout-single { width: 100%; }
+
+.inventory-grid-wrap {
+  padding: 9px;
+  max-height: calc(100svh - 170px);
+}
+
+.inventory-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.inv-slot2 {
+  min-width: 0;
+  height: 58px;
+  min-height: 58px;
+  padding: 5px;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.item-icon-wrap { flex: 0 0 34px; width: 34px; height: 34px; }
+.item-icon { width: 32px; height: 32px; }
+.item-name { font-size: 12px; }
+
+/* ===== Nhân vật / trang bị ===== */
+.character-screen {
+  grid-template-columns: minmax(330px, .9fr) minmax(0, 1.1fr);
+  gap: 10px;
+}
+
+.char-left,
+.char-right { min-width: 0; }
+
+.char-basic,
+.char-stat-list { font-size: 14px; }
+
+.char-figure-area {
+  grid-template-columns: minmax(150px, .7fr) minmax(0, 1.3fr);
+  gap: 8px;
+}
+
+.equip-panel { padding: 8px; }
+.equip-grid { gap: 5px; }
+
+.equip-slot,
+.inv-slot {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.equip-slot {
+  height: 46px;
+  padding: 4px 6px;
+  gap: 5px;
+}
+
+.equip-slot span,
+.inv-slot span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.equip-slot-icon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  object-fit: contain;
+}
+
+@media (max-width: 1200px) {
+  #game-grid { grid-template-columns: 175px minmax(0, 1fr) 250px; }
+  .inventory-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  #game-grid { grid-template-columns: 150px minmax(0, 1fr) 225px; }
+  .character-screen { grid-template-columns: 1fr; }
+  .inventory-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+  #game-grid {
+    grid-template-columns: 145px minmax(0, 1fr);
+    height: auto;
+  }
+  #col-right {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 260px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 600px) {
+  #game-grid { grid-template-columns: 1fr; }
+  #col-left { position: sticky; top: 0; z-index: 20; }
+  #col-right { grid-template-columns: 1fr; grid-template-rows: 260px 260px; height: 528px; }
+  .inventory-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
