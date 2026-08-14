@@ -1,0 +1,39 @@
+/* ===== NHIỆM VỤ ===== */
+.quest-screen{height:100%;min-height:0;display:flex;flex-direction:column;overflow:hidden;color:#edf4ee}
+.quest-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:0 0 auto;margin-bottom:7px}
+.quest-tab{height:50px;border:1px solid #4b431d;border-radius:6px;background:#0a0f0b;color:#e8eee9;font-weight:800;font-size:18px;letter-spacing:.3px}
+.quest-tab:hover{border-color:#8b7020;background:#10170f}
+.quest-tab.active{border-color:#a47d20;background:linear-gradient(180deg,#2c200c,#151207);color:#ffd54d;box-shadow:inset 0 -3px #00e878}
+.quest-summary{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 13px;margin-bottom:7px;border:1px solid #39432b;border-radius:5px;background:#070e09;color:#c8d8cc;font-size:13px}
+.quest-summary strong{color:#f0c43d}.quest-refresh{color:#aebcb2;white-space:nowrap}.quest-refresh b{color:#f0c43d}
+.quest-panel{display:none;flex:1;min-height:0;overflow:hidden}
+.quest-panel.active{display:flex;flex-direction:column}
+.quest-list-scroll{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:2px 5px 8px 1px;scrollbar-width:thin;scrollbar-color:#53624b #040a06}
+.quest-list-scroll::-webkit-scrollbar{width:8px}.quest-list-scroll::-webkit-scrollbar-track{background:#040a06}.quest-list-scroll::-webkit-scrollbar-thumb{background:#53624b;border-radius:8px}.quest-list-scroll::-webkit-scrollbar-thumb:hover{background:#718564}
+.quest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.quest-card{position:relative;min-width:0;border:1px solid #4a421e;border-radius:6px;background:linear-gradient(145deg,#0b120e,#060b08);padding:11px 12px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.quest-card:hover{border-color:#806b25;background:linear-gradient(145deg,#101710,#080d09)}
+.quest-card.accepted{border-color:#0cae5c;box-shadow:inset 3px 0 #00e878,0 0 12px rgba(0,232,120,.08)}
+.quest-card.locked{opacity:.58}
+.quest-number{position:absolute;top:8px;right:9px;color:#6f7d72;font-size:11px;font-weight:700}
+.quest-title-row{display:flex;align-items:flex-start;gap:10px;padding-right:22px}
+.quest-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border:1px solid #5d4b1d;border-radius:6px;background:#050907;color:#f0c43d;font-size:22px}
+.quest-card h3{margin:0;color:#f2c746;font-size:16px;line-height:1.2}
+.quest-subtitle{margin-top:3px;color:#aebcb2;font-size:11px}
+.quest-meta{display:grid;grid-template-columns:1fr 1fr;gap:5px 10px;margin-top:9px;color:#c8d7cc;font-size:12px}
+.quest-meta b{color:#e9f2eb}.quest-meta .accent{color:#f0c43d}
+.quest-reward{margin-top:8px;padding:7px 8px;border:1px solid #183b26;border-radius:5px;background:#07100b;color:#bfe0c7;font-size:11px;line-height:1.45}
+.quest-reward b{color:#f0c43d}
+.quest-actions{display:flex;justify-content:flex-end;gap:6px;margin-top:9px}
+.quest-btn{min-width:125px;height:34px;border:1px solid #8b6d1e;border-radius:5px;background:#171205;color:#f3c53e;font-weight:800;font-size:12px}
+.quest-btn:hover{background:#2b2009;border-color:#c39a2b}
+.quest-btn.accepted{border-color:#0cae5c;background:#062d1b;color:#00ed75}
+.quest-btn.secondary{border-color:#38503c;background:#09120d;color:#b9c8bc}
+.quest-footer-note{flex:0 0 auto;padding:6px 4px 0;color:#7f9184;font-size:11px;text-align:center}
+.bounty-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bounty-card .quest-icon{color:#ff6868;border-color:#6b2c2c}.bounty-card h3{color:#f0bd51}
+.bounty-chance{color:#ff9f6e!important}.bounty-limit{color:#aebcb2}
+.quest-empty{padding:32px;text-align:center;color:#829286;border:1px dashed #334237;border-radius:6px}
+
+@media(max-width:1000px){.quest-grid,.bounty-grid{grid-template-columns:1fr}.quest-tabs{gap:6px}.quest-tab{font-size:16px}.quest-meta{grid-template-columns:1fr 1fr}}
+@media(max-height:720px){.quest-tab{height:42px;font-size:15px}.quest-summary{padding:7px 10px}.quest-card{padding:9px 10px}.quest-title-row h3{font-size:14px}.quest-meta{font-size:11px}.quest-reward{padding:5px 7px}.quest-actions{margin-top:6px}.quest-btn{height:30px}}
