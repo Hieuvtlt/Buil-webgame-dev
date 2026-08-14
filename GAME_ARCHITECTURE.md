@@ -61,12 +61,42 @@ Các nhóm chính:
 
 Đan dược có cấp riêng 1–10. Lv1 dùng cho nhân vật Lv1–10; Lv2 dùng Lv11–20; ...; Lv9 dùng Lv81–90; Lv10 là cấp cuối, dùng cho Lv100–200.
 
-## 7. Thư mục dữ liệu
+## 7. Nhiệm vụ
+
+Menu `Nhiệm vụ` có 2 loại nhiệm vụ và được thiết kế để có vùng cuộn riêng, không làm mất phần nội dung phía dưới khi danh sách dài.
+
+### 7.1. Nhiệm vụ quái vật
+
+- Người chơi được nhận tối đa **2 nhiệm vụ quái vật cùng lúc**.
+- Đây là giới hạn số nhiệm vụ đang nhận, **không phải giới hạn theo ngày**: có thể nhận nhiệm vụ cả ngày và sau khi hoàn thành có thể tiếp tục nhận nhiệm vụ mới.
+- Nhiệm vụ chọn từ bảng **10 nhiệm vụ đa dạng** trong `src/data/questData.js` để dễ thay tên quái, map, phần thưởng và loại nhiệm vụ.
+- Quái vật được đặt ở map phù hợp với Level nhân vật; cấp quái có thể chênh lệch tối đa khoảng ±5 Level.
+- Level nhân vật dưới 50: mỗi nhiệm vụ yêu cầu khoảng **30–60 quái**.
+- Level nhân vật từ 50 đến 89: khoảng **60–100 quái**.
+- Level 90–200: khoảng **200–300 quái**.
+- Phần thưởng gồm **tiền + đan dược + linh dược**.
+- Danh sách 10 nhiệm vụ được hiển thị trong vùng scroll để người chơi tự chọn.
+
+### 7.2. Nhiệm vụ truy nã
+
+- Mỗi lần chỉ được nhận tối đa **1 nhiệm vụ truy nã**.
+- Có bảng **5 mục tiêu truy nã** để người chơi tự chọn.
+- Danh sách truy nã làm mới mỗi **1 giờ**.
+- Mỗi ngày hoàn thành tối đa **10 nhiệm vụ truy nã**.
+- Mục tiêu là các **boss nhỏ/người bị truy nã**, được phân bổ ngẫu nhiên ở nhiều map.
+- Xác suất gặp mục tiêu thấp để tạo cảm giác phải đi tìm mới gặp.
+- Phần thưởng gồm **EXP + tiền + đan dược + linh dược**.
+
+### 7.3. Trạng thái nhiệm vụ
+
+- Trạng thái nhận nhiệm vụ hiện được lưu bằng `localStorage` với key `vltk.questState.v1` để khi chuyển menu hoặc tải lại trang không mất lựa chọn đang nhận.
+- Đây là nền tảng UI/logic ban đầu; hệ thống hoàn thành nhiệm vụ, cộng EXP/tiền/item và liên kết trực tiếp với combat/map sẽ được nối vào hệ thống chiến đấu sau.
+
+## 8. Thư mục dữ liệu
 
 - `src/data/character.js`: trạng thái và thuộc tính nhân vật.
 - `src/data/rebirth.js`: điều kiện và logic trùng sinh.
-- `src/data/equipment.js`: roll phẩm cấp, phẩm chất và thuộc tính trang bị.
-- `src/data/equipmentSlots.js`: vị trí trang bị, không có ngựa.
+- `src/data/questData.js`: dữ liệu 10 nhiệm vụ quái vật, 5 mục tiêu truy nã và quy tắc số lượng quái.
 - `src/data/items/itemSchema.js`: schema item và bảng cấp.
 - `src/data/items/consumables.js`: đan dược.
 - `src/data/items/alchemy.js`: linh dược.
@@ -80,8 +110,10 @@ Các nhóm chính:
 - `src/ui/screens/CharacterScreen.js`: giao diện nhân vật.
 - `src/ui/screens/InventoryScreen.js`: giao diện túi đồ.
 - `src/ui/screens/SkillsScreen.js`: giao diện võ học.
+- `src/ui/screens/NhiemVuScreen.js`: giao diện nhiệm vụ, tab Quái vật/Truy nã và các vùng scroll.
+- `src/quest.css`: style riêng cho menu nhiệm vụ và thanh scroll.
 - `src/ui/controllers/*`: xử lý tương tác từng màn hình.
 
-## 8. Ghi chú dữ liệu VLTK
+## 9. Ghi chú dữ liệu VLTK
 
 Kiến trúc đã sẵn sàng để nhập đầy đủ dữ liệu skill/trang bị VLTK theo từng môn phái và từng nhóm item. Dữ liệu trong `src/data/skills/index.js` hiện là bộ khởi tạo để kiểm tra logic; không coi đây là danh sách skill VLTK hoàn chỉnh.
